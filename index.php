@@ -2,16 +2,18 @@
 
 require_once("vendor/autoload.php");
 
-$app = new \Slim\Slim();
+use \Slim\Slim;
+use \Hcode\page;
+
+$app = new Slim();
 
 $app->config('debug', true);
 
 $app->get('/', function() {
     
-	$sql = new Hcode\DB\Sql();		//=> conexão com o banco de dados 
-	$results = $sql->select("SELECT * FROM tb_users");	//=> vamos selecionar a tabela 
-	echo json_encode($results);			
-
+	$page = new Page();			//=> ele ja chama o __CONSTRUCT e adiciona o header (cabeçalho)
+	$page->setTpl("index");		//=> ele chama o conteudo da pagina
+								//=> como nao tem mais nada ele chama o __DESTRUCT e adiciona o footer (rodape)
 });
 
 $app->run();
