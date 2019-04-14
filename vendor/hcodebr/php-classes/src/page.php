@@ -12,13 +12,13 @@ class Page{				//=> vamos criar a nossa classe Page
 		"data"=> []
 	];
 
-	public function __construct($opts = array()){		//=> vamos criar o metodo construtor (1° a ser executado)
+	public function __construct($opts = array(), $tpl_dir = "/views/"){		//=> vamos criar o metodo construtor (1° a ser executado)
 
 		$this->options = array_merge($this->defaults, $opts);	//=> função que se der um conflito entre os dois, vale o $opts (mescla)
 		
 		//Copiado do arquivo example-simple.php do TPL
 		$config = array(
-			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/",				//=> colocando o diretorio onde esta o template (obrigatorio)
+			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"].$tpl_dir,				//=> colocando o diretorio onde esta o template (obrigatorio)
 			"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",		//=> colocando o diretorio onde esta o cache (obrigatorio)
 			"debug"         => false 											//=>nao precisa mecher so colocar false
 	   );
